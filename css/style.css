@@ -1,0 +1,151 @@
+:root{
+  --front-pic: url(../assets/img/1.png);
+  --back-pic: url(../assets/img/2.png);
+}
+
+body{
+    background: #333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    color: white;
+  }
+
+  .img{
+    display: block;
+    max-width: 60%;
+  }
+
+  .box{
+    width: 380px;
+    height: 380px;
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .front__pic{
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px 3px #000000;
+    background-color: lightblue;
+    background-image: var(--front-pic);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .back__pic{
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px 3px #000000;
+    background-color: lightblue;
+    background-image: var(--back-pic);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .change{
+    z-index: 2;
+    animation-name: change;
+    animation-duration: .8s;
+    animation-timing-function: linear;
+  }
+  @keyframes change {
+      0%{
+          clip-path: polygon(50% 50%, 50% 0%, 50% 0, 50% 0%, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0);
+        }
+      12.5%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 0%, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0); 
+        }
+      25%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 50%, 100% 50%, 100% 50%, 100% 50%, 100% 50%, 100% 50%);
+        }
+      37.5%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%);
+        }
+      50%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%);
+        }
+      62.5%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 100%, 0 100%, 0 100%);
+        }
+      75%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 50%, 0 50%, 0 50%);
+        }
+      87.5%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 50%, 0 0, 0 0);
+        }
+      100%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 50%, 0 0, 50% 0);
+        }
+    }
+
+    .change__back{
+      z-index: 2;
+      animation-name: changeBack;
+      animation-duration: .8s;
+      animation-timing-function: linear;
+    }
+    @keyframes changeBack {
+        0%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 50%, 0 0, 50% 0);
+          }
+        12.5%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 50%, 0 0, 0 0);
+          }
+        25%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 50%, 0 50%, 0 50%);
+          }
+        37.5%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 100%, 0 100%, 0 100%);
+          }
+        50%{
+            clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%);
+          }
+        62.5%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%);
+          }
+        75%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 50%, 100% 50%, 100% 50%, 100% 50%, 100% 50%, 100% 50%, 100% 50%);
+          }
+        87.5%{
+          clip-path: polygon(50% 50%, 50% 0%, 100% 0, 100% 0%, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0); 
+          }
+        100%{
+          clip-path: polygon(50% 50%, 50% 0%, 50% 0, 50% 0%, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0);
+          }
+      }
+      
+    .buttons{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      width: 300px;
+    }
+
+    .button, .count{
+      background-color: transparent;
+      border: 0;
+      outline: none;
+      color: white;
+      font-size: 45px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .button:disabled{
+      color: gray;
+      cursor: not-allowed;
+    }
+
+    .count{
+      color: yellow;
+    }
