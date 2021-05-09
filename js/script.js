@@ -7,8 +7,11 @@ const maxPictures = 150;
 let count = 1;
 
 //Chequear si hay imagenes siguientes y/o previas y desactivar botón si no hay mas;
-count == 1 ? previous.setAttribute("disabled", "disabled") : previous.removeAttribute("disabled", "disabled");
-count == maxPictures ? next.setAttribute("disabled", "disabled") : next.removeAttribute("disabled", "disabled");
+const doButtonsWork = (count) => {
+    count == 1 ? previous.setAttribute("disabled", "disabled") : previous.removeAttribute("disabled", "disabled");
+    count == maxPictures ? next.setAttribute("disabled", "disabled") : next.removeAttribute("disabled", "disabled");
+}
+doButtonsWork(count);
 domCount.textContent = count;
 
 next.addEventListener("click", ()=> {
@@ -23,9 +26,7 @@ next.addEventListener("click", ()=> {
         backPic.classList.remove("change");
         frontPic.style.setProperty('--front-pic', `url(../assets/img/${count}.png)`);
         count < maxPictures ? backPic.style.setProperty('--back-pic', `url(../assets/img/${count + 1}.png)`) : "";
-        //Chequear si hay imagenes siguientes y/o previas y desactivar botón si no hay mas;
-        count == 1 ? previous.setAttribute("disabled", "disabled") : previous.removeAttribute("disabled", "disabled");
-        count == maxPictures ? next.setAttribute("disabled", "disabled") : next.removeAttribute("disabled", "disabled");
+        doButtonsWork(count);
     }, 800);
 });
 
@@ -45,8 +46,6 @@ previous.addEventListener("click", ()=> {
         frontPic.classList.remove("change__back");
         frontPic.style.setProperty('--front-pic', `url(../assets/img/${count}.png)`);
         backPic.style.setProperty('--back-pic', `url(../assets/img/${count + 1}.png)`);
-        //Chequear si hay imagenes siguientes y/o previas y desactivar botón si no hay mas;
-        count == 1 ? previous.setAttribute("disabled", "disabled") : previous.removeAttribute("disabled", "disabled");
-        count == maxPictures ? next.setAttribute("disabled", "disabled") : next.removeAttribute("disabled", "disabled");
+        doButtonsWork(count);
     }, 800);
 });
