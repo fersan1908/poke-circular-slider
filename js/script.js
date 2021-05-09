@@ -6,36 +6,37 @@ const domCount = document.getElementById("count");
 const maxPictures = 150;
 let count = 1;
 
-//Chequear si hay imagenes siguientes y/o previas y desactivar botón si no hay mas;
-const doButtonsWork = (count) => {
+//Inhabilitar los botones de siguiente y previo
+const getDisabledButtons = () => {
+    previous.setAttribute("disabled", "disabled");
+    next.setAttribute("disabled", "disabled");
+}
+//Chequear si hay imagenes siguientes y/o previas y activar los botones si corresponde:
+const getEnabledButtons = (count) => {
     count == 1 ? previous.setAttribute("disabled", "disabled") : previous.removeAttribute("disabled", "disabled");
     count == maxPictures ? next.setAttribute("disabled", "disabled") : next.removeAttribute("disabled", "disabled");
 }
-doButtonsWork(count);
+getEnabledButtons(count);
 domCount.textContent = count;
 
 next.addEventListener("click", ()=> {
     count++;
     domCount.textContent = count;
-    //Mientras se ejecuta la animación desactivamos botones
-    previous.setAttribute("disabled", "disabled");
-    next.setAttribute("disabled", "disabled");
+    getDisabledButtons();
     //animación
     backPic.classList.add("change");
     setTimeout(() => {
         backPic.classList.remove("change");
         frontPic.style.setProperty('--front-pic', `url(../assets/img/${count}.png)`);
         count < maxPictures ? backPic.style.setProperty('--back-pic', `url(../assets/img/${count + 1}.png)`) : "";
-        doButtonsWork(count);
+        getEnabledButtons(count);
     }, 800);
 });
 
 previous.addEventListener("click", ()=> {
     count--;
     domCount.textContent = count;
-    //Mientras se ejecuta la animación desactivamos botones
-    previous.setAttribute("disabled", "disabled");
-    next.setAttribute("disabled", "disabled");
+    getDisabledButtons();
     //Cambiar la posición de la nueva imagen y la anterior
     frontPic.style.setProperty('--front-pic', `url(../assets/img/${count + 1}.png)`);
     backPic.style.setProperty('--back-pic', `url(../assets/img/${count}.png)`);
@@ -46,6 +47,6 @@ previous.addEventListener("click", ()=> {
         frontPic.classList.remove("change__back");
         frontPic.style.setProperty('--front-pic', `url(../assets/img/${count}.png)`);
         backPic.style.setProperty('--back-pic', `url(../assets/img/${count + 1}.png)`);
-        doButtonsWork(count);
+        getEnabledButtons(count);
     }, 800);
 });
